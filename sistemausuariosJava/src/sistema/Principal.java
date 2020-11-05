@@ -1,5 +1,9 @@
 package sistema;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 
@@ -10,15 +14,18 @@ import java.util.Scanner;
  *  
  */
 public class Principal {
-
+	public static SimpleDateFormat sdf = new SimpleDateFormat("DD-MM-YYYY");
+	public static Calendar calendar = new GregorianCalendar();
 	public static void main(String[] args) {
-
+		
+		Date fecha;
 		String temp = "";
-		int opcion = 0, temp2 = 0;
+		int opcion = 0, temp2 = 0, dia = 0, mes = 0, anio = 0;
 		Contenedor listausuario = new Contenedor();
 		Contenedor listacapacitacion = new Contenedor();
 		Scanner numeros = new Scanner(System.in);  //Escanner para enteros.
 		Scanner letras = new Scanner(System.in); //Escanner para texto.
+		
 		
 do  {		
 		
@@ -50,12 +57,30 @@ do  {
 					temp = letras.nextLine();
 					cliente.setNombre(temp);
 				} while (temp.length()<=5 || temp.length()>=31);
-				do { 
-					System.out.println("Escriba la fecha de nacimiento del cliente ocupar formato "
-							+ "DD/MM/AAAA: ");
-					temp = letras.nextLine();
-					cliente.setFechanacimiento(temp);
-				} while (temp.length() !=10);
+				
+				//entrada del atributo fecha para la clase cliente.
+				 
+					System.out.println("Escriba la fecha de nacimiento del cliente: ");
+					do {
+					System.out.println("Escriba el dia");
+					dia = numeros.nextInt();
+					} while (dia<0 || dia>31);
+					do {
+					System.out.println("Escriba el mes");
+					mes = numeros.nextInt();
+					} while (mes<0 || mes>12);
+					do {
+					System.out.println("Escriba el año");
+					anio = numeros.nextInt();
+					} while (anio<1900 || anio>2020);
+					
+					cargarfecha(dia, mes, anio);
+					
+					fecha = getfecha();
+					temp = sdf.format(fecha);
+					cliente.setFechanacimiento(temp);;
+				
+				
 				do { 
 					System.out.println("Escriba Apellidos de cliente: ");
 					temp = letras.nextLine();
@@ -238,4 +263,19 @@ do  {
 
 	}
 
-}
+	public static void cargarfecha(int dia, int mes, int anio) {
+		 calendar.set(anio, mes, dia);
+		
+		 
+	}	
+	
+	public static Date getfecha() {
+		return calendar.getTime();
+		
+	}
+
+
+}	
+
+
+
