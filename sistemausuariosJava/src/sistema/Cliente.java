@@ -117,6 +117,7 @@ public class Cliente extends Usuario {
 	 */
 	public String mostrarusuario() {
 		return "El nombre del usuario es: " + this.getNombre()
-		           +"\nSu RUN es:"+ this.getRun();
+		           +"\nSu RUN es:"+ this.getRun()
+				   +"\nSu Fecha de nacimineto es: " + this.getFechanacimiento();
 	}
 }

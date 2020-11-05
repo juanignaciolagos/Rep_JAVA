@@ -14,7 +14,7 @@ import java.util.Scanner;
  *  
  */
 public class Principal {
-	public static SimpleDateFormat sdf = new SimpleDateFormat("DD-MM-YYYY");
+	public static SimpleDateFormat sdf = new SimpleDateFormat("DD/MM/YYYY");
 	public static Calendar calendar = new GregorianCalendar();
 	public static void main(String[] args) {
 		
@@ -67,14 +67,14 @@ do  {
 					} while (dia<0 || dia>31);
 					do {
 					System.out.println("Escriba el mes");
-					mes = numeros.nextInt();
+					mes = numeros.nextInt()-1;
 					} while (mes<0 || mes>12);
 					do {
 					System.out.println("Escriba el año");
 					anio = numeros.nextInt();
 					} while (anio<1900 || anio>2020);
 					
-					cargarfecha(dia, mes, anio);
+					cargarfecha(dia-304, mes, anio);
 					
 					fecha = getfecha();
 					temp = sdf.format(fecha);
