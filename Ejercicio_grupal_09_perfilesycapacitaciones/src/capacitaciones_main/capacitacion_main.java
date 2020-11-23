@@ -82,7 +82,8 @@ for(x=0;x<cantidad;x++) {
 				System.out.println("edad invalida");
 			}
 			
-			
+			letras.close();
+			num.close();	
 			
 		}
 		System.out.println("############################################################");
@@ -100,6 +101,9 @@ for(x=0;x<cantidad;x++) {
 				+"\n entre 26 y 35 años: "+contb
 				+"\n mayores de 35 años: "+conta);
 		System.out.println("############################################################");
+	
+
+	
 	}
 
 }
